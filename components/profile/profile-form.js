@@ -40,6 +40,8 @@ export default function Profile(props) {
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordHelper, setNewPasswordHelper] = useState("");
   const [oldPasswordHelper, setOldPasswordHelper] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [confirmPasswordHelper, setConfirmPasswordHelper] = useState("");
   const [alertNotification, setAlert] = useState({
     open: false,
     message: "",
@@ -79,6 +81,20 @@ export default function Profile(props) {
           setNewPasswordHelper("");
         }
         break;
+      case "confirmPassword":
+        setConfirmNewPassword(event.target.value);
+        valid = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$/.test(
+          event.target.value
+        );
+
+        if (!valid) {
+          setConfirmPasswordHelper(
+            "Minimum five characters, at least one letter and one number"
+          );
+        } else {
+          setConfirmPasswordHelper("");
+        }
+        break;
       default:
         break;
     }
@@ -98,7 +114,7 @@ export default function Profile(props) {
   function onSubmit(event) {
     event.preventDefault();
 
-    if (password === newPassword) {
+    if (confirmNewPassword === newPassword) {
       const response = props.onChangePassword({
         oldPassword: password,
         newPassword: newPassword,
@@ -159,6 +175,21 @@ export default function Profile(props) {
             id="newPassword"
             autoComplete="current-password"
           />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="confirmPassword"
+            error={confirmPasswordHelper.length !== 0}
+            helperText={confirmPasswordHelper}
+            value={confirmNewPassword}
+            onChange={onChange}
+            label="Confirm New Password"
+            type="password"
+            id="confirmPassword"
+            autoComplete="current-password"
+          />
 
           <Button
             type="submit"
@@ -169,7 +200,9 @@ export default function Profile(props) {
             disabled={
               newPasswordHelper.length !== 0 ||
               oldPasswordHelper.length !== 0 ||
+              confirmPasswordHelper.length !== 0 ||
               password.length === 0 ||
+              confirmNewPassword.length === 0 ||
               newPassword.length === 0
             }
           >

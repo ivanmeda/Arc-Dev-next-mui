@@ -190,8 +190,18 @@ export default function SignInSide() {
             });
             return res;
           });
+          setAlert({
+            open: true,
+            message: "Please wait...",
+            backgroundColor: "#4BB543",
+          });
           router.replace("/projects");
           setLoading(false);
+          setAlert({
+            open: false,
+            message: "",
+            backgroundColor: "#4BB543",
+          });
         }
       } catch (error) {
         setLoading(false);
