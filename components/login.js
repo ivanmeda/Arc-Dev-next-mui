@@ -157,7 +157,8 @@ export default function SignInSide() {
       }).then((res) => {
         setAlert({
           open: true,
-          message: res.error || res.message || "Successfully Log In!",
+          message:
+            res.error || res.message || "Successfully Log In! Please wait...",
           backgroundColor: res.error ? '"#FF3232"' : "#4BB543",
         });
         return res;
@@ -185,23 +186,14 @@ export default function SignInSide() {
                 res.error ||
                 res.message ||
                 result.message ||
-                "Successfully Log In!",
+                "Successfully Log In! Please wait...",
               backgroundColor: res.error ? '"#FF3232"' : "#4BB543",
             });
             return res;
           });
-          setAlert({
-            open: true,
-            message: "Please wait...",
-            backgroundColor: "#4BB543",
-          });
+
           router.replace("/projects");
           setLoading(false);
-          setAlert({
-            open: false,
-            message: "",
-            backgroundColor: "#4BB543",
-          });
         }
       } catch (error) {
         setLoading(false);
