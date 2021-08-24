@@ -95,8 +95,8 @@ export default function CustomSoftware(props) {
           content="Bringing West Coast Technology to the Midwest | Custom Software Development"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com/customsoftware" />
-        <link rel="canonical" key="canonical" href="arc.com/customsoftware" />
+        <meta property="og:url" key="og:url" content="https://arc-dev-next-mui-bzzoepjxy-ivanmeda.vercel.app//customsoftware" />
+        <link rel="canonical" key="canonical" href="https://arc-dev-next-mui-bzzoepjxy-ivanmeda.vercel.app//customsoftware" />
       </Head>
       <Grid
         item

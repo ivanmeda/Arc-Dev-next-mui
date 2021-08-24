@@ -207,7 +207,7 @@ export default function Contact(props) {
         <link
           rel="canonical"
           key="canonical"
-          href="https://arc.com/contact.js"
+          href="https://arc-dev-next-mui-bzzoepjxy-ivanmeda.vercel.app//contact.js"
         />
       </Head>
       <Grid
@@ -218,7 +218,7 @@ export default function Contact(props) {
         alignItems="center"
         style={{
           marginBottom: matchesMD ? "5em" : 0,
-          marginTop: matchesSM ? "1em" : matchesMD ? "5em" : 0
+          marginTop: matchesSM ? "1em" : matchesMD ? "5em" : 0,
         }}
         lg={4}
         xl={3}
@@ -292,7 +292,7 @@ export default function Contact(props) {
                   id="name"
                   fullWidth
                   value={name}
-                  onChange={event => setName(event.target.value)}
+                  onChange={(event) => setName(event.target.value)}
                 />
               </Grid>
               <Grid item style={{ marginBottom: "0.5em" }}>
@@ -328,10 +328,15 @@ export default function Contact(props) {
                 fullWidth
                 rows={10}
                 id="message"
-                onChange={event => setMessage(event.target.value)}
+                onChange={(event) => setMessage(event.target.value)}
               />
             </Grid>
-            <Grid item container justifyContent="center" style={{ marginTop: "2em" }}>
+            <Grid
+              item
+              container
+              justifyContent="center"
+              style={{ marginTop: "2em" }}
+            >
               <Button
                 disabled={
                   name.length === 0 ||
@@ -363,18 +368,18 @@ export default function Contact(props) {
             paddingLeft: matchesXS
               ? 0
               : matchesSM
-                ? "5em"
-                : matchesMD
-                  ? "15em"
-                  : "25em",
+              ? "5em"
+              : matchesMD
+              ? "15em"
+              : "25em",
             paddingRight: matchesXS
               ? 0
               : matchesSM
-                ? "5em"
-                : matchesMD
-                  ? "15em"
-                  : "25em"
-          }
+              ? "5em"
+              : matchesMD
+              ? "15em"
+              : "25em",
+          },
         }}
       >
         <DialogContent>
@@ -390,7 +395,7 @@ export default function Contact(props) {
                 id="name"
                 fullWidth
                 value={name}
-                onChange={event => setName(event.target.value)}
+                onChange={(event) => setName(event.target.value)}
               />
             </Grid>
             <Grid item style={{ marginBottom: "0.5em" }}>
@@ -425,7 +430,7 @@ export default function Contact(props) {
               fullWidth
               rows={10}
               id="message"
-              onChange={event => setMessage(event.target.value)}
+              onChange={(event) => setMessage(event.target.value)}
             />
           </Grid>
           <Grid
@@ -486,7 +491,7 @@ export default function Contact(props) {
           item
           style={{
             marginLeft: matchesMD ? 0 : "3em",
-            textAlign: matchesMD ? "center" : "inherit"
+            textAlign: matchesMD ? "center" : "inherit",
           }}
         >
           <Grid container direction="column">
@@ -503,7 +508,11 @@ export default function Contact(props) {
               >
                 Take advantage of the 21st Century.
               </Typography>
-              <Grid container justifyContent={matchesMD ? "center" : undefined} item>
+              <Grid
+                container
+                justifyContent={matchesMD ? "center" : undefined}
+                item
+              >
                 <Button
                   component={Link}
                   href="/revolution"
@@ -532,7 +541,7 @@ export default function Contact(props) {
               props.setValue(5);
               ReactGA.event({
                 category: "Estimate",
-                action: "Contact Page Pressed"
+                action: "Contact Page Pressed",
               });
             }}
           >

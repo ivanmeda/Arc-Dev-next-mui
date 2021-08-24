@@ -53,8 +53,16 @@ export default function Websites(props) {
           content="Bringing West Coast Technology to the Midwest | Websites"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com/websites" />
-        <link rel="canonical" key="canonical" href="arc.com/websites" />
+        <meta
+          property="og:url"
+          key="og:url"
+          content="https://arc-dev-next-mui-bzzoepjxy-ivanmeda.vercel.app//websites"
+        />
+        <link
+          rel="canonical"
+          key="canonical"
+          href="https://arc-dev-next-mui-bzzoepjxy-ivanmeda.vercel.app//websites"
+        />
       </Head>
       <Grid
         item

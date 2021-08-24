@@ -64,8 +64,16 @@ export default function Services(props) {
           content="Bringing West Coast Technology to the Midwest | Services"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com/services" />
-        <link rel="canonical" key="canonical" href="arc.com/services" />
+        <meta
+          property="og:url"
+          key="og:url"
+          content="https://arc-dev-next-mui-bzzoepjxy-ivanmeda.vercel.app//services"
+        />
+        <link
+          rel="canonical"
+          key="canonical"
+          href="https://arc-dev-next-mui-bzzoepjxy-ivanmeda.vercel.app//services"
+        />
       </Head>
       <Grid
         item
