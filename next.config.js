@@ -10,12 +10,3 @@ module.exports = withPlugins([
   ],
   // your other plugins here
 ]);
-
-module.exports = {
-  env: {
-    mongodb_username: "ivan",
-    mongodb_password: "medved1993",
-    mongodb_cluster: "cluster0",
-    mongodb_database: "auth",
-  },
-};
