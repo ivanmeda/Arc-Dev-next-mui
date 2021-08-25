@@ -148,53 +148,62 @@ export default function SignInSide() {
     event.preventDefault();
     setLoading(true);
 
-    // optional: Add validation
     if (isLogin) {
+      setAlert({
+        open: true,
+        message: "Pending...",
+        backgroundColor: "",
+      });
       const result = await signIn("credentials", {
         redirect: false,
         email: email,
         password: password,
-      }).then((res) => {
-        setAlert({
-          open: true,
-          message:
-            res.error || res.message || "Successfully Log In! Please wait...",
-          backgroundColor: res.error ? '"#FF3232"' : "#4BB543",
-        });
-        return res;
       });
 
       if (result.error) {
         setLoading(false);
       }
+
       if (!result.error) {
-        router.replace("/projects");
+        setAlert({
+          open: true,
+          message:
+            result.error === null
+              ? "Successfully Log In! Please wait..."
+              : result.error,
+          backgroundColor: result.error === null ? "#4BB543" : "#FF3232",
+        });
         setLoading(false);
+
+        router.replace("/projects");
       }
     } else {
       try {
+        setAlert({
+          open: true,
+          message: "Pending...",
+          backgroundColor: "",
+        });
         const result = await createUser(email, password);
+
         if (!result.error) {
-          await signIn("credentials", {
+          const req = await signIn("credentials", {
             redirect: false,
             email: email,
             password: password,
-          }).then((res) => {
-            setAlert({
-              open: true,
-              message:
-                res.error ||
-                res.message ||
-                result.message ||
-                "Successfully Log In! Please wait...",
-              backgroundColor: res.error ? '"#FF3232"' : "#4BB543",
-            });
-            return res;
           });
-
+          setAlert({
+            open: true,
+            message:
+              req.error ||
+              req.message ||
+              result.message ||
+              "Successfully Log In! Please wait...",
+            backgroundColor: req.error ? "#FF3232" : "#4BB543",
+          });
           router.replace("/projects");
-          setLoading(false);
         }
+        setLoading(false);
       } catch (error) {
         setLoading(false);
         setAlert({
@@ -269,9 +278,9 @@ export default function SignInSide() {
                 {loading ? (
                   <CircularProgress size={20} color="secondary" />
                 ) : isLogin ? (
-                  "Sing In"
+                  "Log In"
                 ) : (
-                  "Sing Up"
+                  "Sign up"
                 )}
               </Button>
               <Button
@@ -279,7 +288,7 @@ export default function SignInSide() {
                 color="primary"
                 onClick={() => setIsLogin(!isLogin)}
               >
-                {isLogin ? "Sing Up" : "Sing In"}
+                {isLogin ? "Don't have an account? Sign up" : "Sing In"}
               </Button>
             </Grid>
             <Box mt={5}>

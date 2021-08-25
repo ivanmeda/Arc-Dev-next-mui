@@ -25,13 +25,15 @@ function UserProfile() {
     });
 
     const data = await response.json();
-
     setAlert({
       open: true,
       message: data.message,
-      backgroundColor: "#4BB543",
+      backgroundColor:
+        data.message === "Invalid password." ? "#FF3232" : "#4BB543",
     });
-    router.replace("/projects");
+    if (data.message !== "Invalid password.") {
+      router.replace("/projects");
+    }
   }
 
   return (
